@@ -1,0 +1,41 @@
+# Fill in before Hack2Skill portal upload
+
+team:
+  name: ""  # e.g. "Prakash Solo" or your team name
+  id: ""    # from Hack2Skill dashboard → team_xxx.csv filename
+
+event:
+  name: "India Runs by Redrob AI"
+  track: "Track 1 — Data & AI Challenge"
+  url: "https://hack2skill.com/event/india_runs"
+  deadline: "2026-06-28"
+
+submission:
+  github_repo: "https://github.com/prakash023-hub/india-runs-ranker"
+  sandbox_url: ""  # Streamlit or HuggingFace Space URL after deploy
+  csv_filename: "team_<id>.csv"
+
+approach_summary: |
+  CPU-only heuristic ranker that streams 100k JSONL profiles through a min-heap
+  (O(n log k)) in ~18 seconds. Scoring prioritizes career evidence over skill-list
+  keywords: Senior/Lead AI Engineers with production retrieval, ranking, and RAG
+  experience score highest; trap profiles (e.g. Marketing Managers with AI skills
+  but no engineering history) are penalized. Redrob behavioral signals
+  (response rate, activity, assessments) provide tie-breakers. No API calls
+  during ranking; fits 16 GB RAM constraint.
+
+runtime:
+  candidates_processed: 100000
+  top_k: 100
+  elapsed_seconds: 18.1
+  hardware_note: "Local Mac / CPU only"
+
+top_candidate:
+  id: "CAND_0071974"
+  title: "Senior AI Engineer"
+  years_experience: 7.8
+
+links:
+  validation: "python validate_submission.py --csv output/submission.csv"
+  cli: "python rank.py --output output/submission.csv"
+  sandbox: "streamlit run app.py"
